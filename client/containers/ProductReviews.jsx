@@ -38,10 +38,10 @@ function composer(props, onData) {
 
     const averageRating = reviews
       .map((currentReview) => currentReview.rating)
-      .reduce((ratingSum, currentRating) => ratingSum + currentRating) / reviewCount;
+      .reduce((ratingSum, currentRating) => ratingSum + currentRating, [0]) / reviewCount;
 
     onData(null, {
-      averageRating,
+      averageRating: averageRating || 0,
       reviewCount
     });
   }
