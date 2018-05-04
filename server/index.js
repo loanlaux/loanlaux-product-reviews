@@ -1,7 +1,10 @@
 import { Reaction } from "/server/api";
 import SimpleLayout from "../lib/layout/simple";
 import TwoColumnLayout from "../lib/layout/twoColumn";
-import "../lib/collection";
+import { ProductReviews } from "../lib/collection";
+import { ProductReviews as ProductReviewsSchema } from "./schema";
+
+ProductReviews.attachSchema(ProductReviewsSchema);
 
 Reaction.registerTemplate({
   name: "productDetailSimple",

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { compose } from "recompose";
 import { registerComponent, composeWithTracker } from "@reactioncommerce/reaction-components";
 import { Meteor } from "meteor/meteor";
-import { ProductReviews as ProductReviewsComponent } from "../components";
+import { ProductReviewsComponent } from "../components";
 import { ProductReviews } from "../../lib/collection";
 import { ReactionProduct } from "/lib/api";
 
@@ -33,4 +33,7 @@ export default compose(
   wrapComponent
 )(ProductReviewsComponent);
 
-registerComponent("ProductReviews", ProductReviewsContainer);
+registerComponent("ProductReviews", ProductReviewsComponent, [
+  composeWithTracker(composer),
+  wrapComponent
+]);
