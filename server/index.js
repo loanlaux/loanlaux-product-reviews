@@ -3,6 +3,7 @@ import SimpleLayout from "../lib/layout/simple";
 import TwoColumnLayout from "../lib/layout/twoColumn";
 import { ProductReviews } from "../lib/collection";
 import { ProductReviews as ProductReviewsSchema } from "./schema";
+import "./publication";
 
 ProductReviews.attachSchema(ProductReviewsSchema);
 

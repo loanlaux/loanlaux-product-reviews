@@ -22,7 +22,7 @@ function composer(props, onData) {
   if (ProductReviewsSubscription.ready()) {
     const reviews = ProductReviews.find().fetch();
 
-    onData({
+    onData(null, {
       reviews
     });
   }
