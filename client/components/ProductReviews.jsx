@@ -21,7 +21,7 @@ class ProductReviews extends Component {
       >
         <hr />
         <div className="product-rating-value">
-          <h5><span itemProp="ratingValue">{averageRating}</span>/5</h5>
+          <h5><span itemProp="ratingValue">{averageRating.toFixed(2)}</span>/5</h5>
           <Stars
             className="product-rating-stars"
             color="#efc95f"
