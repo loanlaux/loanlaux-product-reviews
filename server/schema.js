@@ -11,7 +11,7 @@ export const ProductReviews = new SimpleSchema({
     type: String
   },
   rating: {
-    type: SimpleSchema.Integer
+    type: Number
   }
 }, { check, tracker: Tracker });
 
