@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { compose } from "recompose";
 import { registerComponent, composeWithTracker } from "@reactioncommerce/reaction-components";
 import { Meteor } from "meteor/meteor";
@@ -8,6 +9,11 @@ import { ReactionProduct } from "/lib/api";
 
 const wrapComponent = (Comp) => (
   class ProductReviewsContainer extends Component {
+    static propTypes = {
+      averageRating: PropTypes.number,
+      reviewCount: PropTypes.number
+    };
+
     render() {
       return (
         <Comp {...this.props} />
@@ -21,9 +27,15 @@ function composer(props, onData) {
 
   if (ProductReviewsSubscription.ready()) {
     const reviews = ProductReviews.find().fetch();
+    const reviewCount = reviews.length;
+
+    const averageRating = reviews
+      .map((currentReview) => currentReview.rating)
+      .reduce((ratingSum, currentRating) => ratingSum + currentRating) / reviewCount;
 
     onData(null, {
-      reviews
+      averageRating,
+      reviewCount
     });
   }
 }
