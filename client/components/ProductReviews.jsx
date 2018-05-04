@@ -5,11 +5,12 @@ import Stars from "react-stars";
 class ProductReviews extends Component {
   static propTypes = {
     averageRating: PropTypes.number,
+    onSubmitReview: PropTypes.func,
     reviewCount: PropTypes.number
   };
 
   render() {
-    const { averageRating, reviewCount } = this.props;
+    const { averageRating, onSubmitReview, reviewCount } = this.props;
 
     return (
       <div
@@ -24,6 +25,7 @@ class ProductReviews extends Component {
           <Stars
             className="product-rating-stars"
             color="#efc95f"
+            onChange={onSubmitReview}
             value={averageRating}
           />
         </div>

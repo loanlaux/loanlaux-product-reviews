@@ -14,9 +14,16 @@ const wrapComponent = (Comp) => (
       reviewCount: PropTypes.number
     };
 
+    handleSubmitReview = (rating) => {
+      Meteor.call("loanlaux/submitProductReview", rating, ReactionProduct.selectedProductId());
+    };
+
     render() {
       return (
-        <Comp {...this.props} />
+        <Comp
+          onSubmitReview={this.handleSubmitReview}
+          {...this.props}
+        />
       );
     }
   }

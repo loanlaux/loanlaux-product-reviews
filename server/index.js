@@ -4,6 +4,7 @@ import TwoColumnLayout from "../lib/layout/twoColumn";
 import { ProductReviews } from "../lib/collection";
 import { ProductReviews as ProductReviewsSchema } from "./schema";
 import "./publication";
+import "./methods";
 
 ProductReviews.attachSchema(ProductReviewsSchema);
 
