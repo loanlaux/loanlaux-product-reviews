@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { registerComponent } from "@reactioncommerce/reaction-components";
 import Stars from "./Stars";
 
 class ProductReviews extends Component {
@@ -23,5 +22,3 @@ class ProductReviews extends Component {
 }
 
 export default ProductReviews;
-
-registerComponent("ProductReviews", ProductReviews);

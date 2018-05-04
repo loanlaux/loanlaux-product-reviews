@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { check } from "meteor/check";
-import { ProductReviews } from "./collection";
+import { ProductReviews } from "../lib/collection";
 
 Meteor.publish("ProductReviews", (productId) => {
   check(productId, String);

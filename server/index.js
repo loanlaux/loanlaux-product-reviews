@@ -1,7 +1,7 @@
 import { Reaction } from "/server/api";
 import SimpleLayout from "../lib/layout/simple";
 import TwoColumnLayout from "../lib/layout/twoColumn";
-import "./collection";
+import "../lib/collection";
 
 Reaction.registerTemplate({
   name: "productDetailSimple",
