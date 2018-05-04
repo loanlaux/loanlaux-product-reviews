@@ -1,0 +1,25 @@
+{
+  "name": "loanlaux-product-reviews",
+  "version": "1.0.0",
+  "description": "Let's bring product reviews to Reaction Commerce!",
+  "main": "register.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loanlaux/loanlaux-product-reviews.git"
+  },
+  "author": "Loan Laux <contact@loanlaux.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loanlaux/loanlaux-product-reviews/issues"
+  },
+  "homepage": "https://github.com/loanlaux/loanlaux-product-reviews#readme",
+  "dependencies": {
+    "react-stars": "^2.2.5"
+  }
+}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { compose } from "recompose";
-import { registerComponent, composeWithTracker } from "@reactioncommerce/reaction-components";
+import { registerComponent, composeWithTracker } from "/imports/plugins/core/components/lib";
 import { Meteor } from "meteor/meteor";
 import { ProductReviewsComponent } from "../components";
 import { ProductReviews } from "../../lib/collection";

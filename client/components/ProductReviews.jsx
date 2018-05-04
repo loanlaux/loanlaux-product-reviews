@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Stars from "./Stars";
+import Stars from "react-stars";
 
 class ProductReviews extends Component {
   static propTypes = {
@@ -19,10 +19,10 @@ class ProductReviews extends Component {
         itemScope
       >
         <hr />
-        <h5>
-          <span><span itemProp="ratingValue">{averageRating}</span>/5 </span>
-          <Stars />
-        </h5>
+        <div className="product-rating-value">
+          <h5><span itemProp="ratingValue">{averageRating}</span>/5</h5>
+          <Stars className="product-rating-stars" value={averageRating} />
+        </div>
         <p className="product-rating-count">Based on <span itemProp="ratingValue">{reviewCount}</span> customer reviews.</p>
       </div>
     );
