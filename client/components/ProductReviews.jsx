@@ -21,9 +21,15 @@ class ProductReviews extends Component {
         <hr />
         <div className="product-rating-value">
           <h5><span itemProp="ratingValue">{averageRating}</span>/5</h5>
-          <Stars className="product-rating-stars" value={averageRating} />
+          <Stars
+            className="product-rating-stars"
+            color="#efc95f"
+            value={averageRating}
+          />
         </div>
-        <p className="product-rating-count">Based on <span itemProp="ratingValue">{reviewCount}</span> customer reviews.</p>
+        <p className="product-rating-count">
+          Based on <span itemProp="ratingValue">{reviewCount}</span> customer review{reviewCount > 1 && "s"}.
+        </p>
       </div>
     );
   }
