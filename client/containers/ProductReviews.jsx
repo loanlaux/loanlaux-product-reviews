@@ -48,9 +48,11 @@ const wrapComponent = (Comp) => (
 function composer(props, onData) {
   const productReviewsSubscription = Meteor.subscribe("ProductReviews", ReactionProduct.selectedProductId());
   const accountOrdersSubscription = Meteor.subscribe("AccountOrders", Meteor.userId());
-  const packageSubscription = Meteor.subscribe("Packages", Reaction.getShopId());
 
-  if (productReviewsSubscription.ready() && accountOrdersSubscription.ready() && packageSubscription.ready()) {
+  if (productReviewsSubscription.ready() &&
+    accountOrdersSubscription.ready() &&
+    Reaction.Subscriptions.Packages.ready()) {
+
     const packageSettings = Packages.findOne({ name: "loanlaux-product-reviews" }).settings.public;
 
     let userHasPurchasedProduct;

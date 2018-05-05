@@ -4,7 +4,7 @@ import { Reaction } from "/server/api";
 import { Orders, Packages } from "/lib/collections";
 import { ProductReviews } from "../lib/collection";
 import hasUserPurchasedProduct from "../lib/hasUserPurchasedProduct";
-import {ReactionProduct} from "../../../../../lib/api";
+import { ReactionProduct } from "/lib/api";
 
 Meteor.methods({
   "loanlaux/submitProductReview": (rating, productId) => {

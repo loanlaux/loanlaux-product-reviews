@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { compose } from "recompose";
 import { registerComponent, composeWithTracker } from "/imports/plugins/core/components/lib";
 import { Reaction } from "/client/api";
+import { Packages } from "/lib/collections";
 import ProductReviewSettings from "../components/ProductReviewSettings";
 
 const wrapComponent = (Comp) => (
@@ -10,7 +11,7 @@ const wrapComponent = (Comp) => (
       super(props);
 
       this.state = {
-        settings: props.packageInfo.settings
+        settings: props.packageSettings
       };
     }
 
@@ -38,10 +39,10 @@ const wrapComponent = (Comp) => (
 
 function composer(props, onData) {
   if (Reaction.Subscriptions.Packages.ready()) {
-    const packageInfo = Reaction.getPackageSettings("loanlaux-product-reviews");
+    const packageSettings = Packages.findOne({ name: "loanlaux-product-reviews" }).settings;
 
     onData(null, {
-      packageInfo
+      packageSettings
     });
   }
 }
