@@ -15,7 +15,8 @@ class ProductReviews extends Component {
       averageRating,
       canSubmitReview,
       onSubmitReview,
-      reviewCount
+      reviewCount,
+      userHasPurchasedProduct
     } = this.props;
 
     return (
@@ -31,7 +32,7 @@ class ProductReviews extends Component {
           <Stars
             className="product-rating-stars"
             color="#efc95f"
-            edit={canSubmitReview}
+            edit={canSubmitReview && userHasPurchasedProduct}
             onChange={onSubmitReview}
             value={averageRating}
           />

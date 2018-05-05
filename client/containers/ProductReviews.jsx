@@ -7,6 +7,7 @@ import { ProductReviewsComponent } from "../components";
 import { ProductReviews } from "../../lib/collection";
 import { ReactionProduct } from "/lib/api";
 import { Reaction } from "/client/api";
+import { Orders } from "/lib/collections";
 
 const wrapComponent = (Comp) => (
   class ProductReviewsContainer extends Component {
@@ -34,9 +35,10 @@ const wrapComponent = (Comp) => (
 );
 
 function composer(props, onData) {
-  const ProductReviewsSubscription = Meteor.subscribe("ProductReviews", ReactionProduct.selectedProductId());
+  const productReviewsSubscription = Meteor.subscribe("ProductReviews", ReactionProduct.selectedProductId());
+  const accountOrdersSubscription = Meteor.subscribe("AccountOrders", Meteor.userId());
 
-  if (ProductReviewsSubscription.ready()) {
+  if (productReviewsSubscription.ready() && accountOrdersSubscription.ready()) {
     const reviews = ProductReviews.find().fetch();
     const reviewCount = reviews.length;
 
@@ -44,9 +46,22 @@ function composer(props, onData) {
       .map((currentReview) => currentReview.rating)
       .reduce((ratingSum, currentRating) => ratingSum + currentRating, 0) / reviewCount;
 
+    const userOrders = Orders.find().fetch();
+
+    const userOrderItemIds = userOrders
+      .reduce((orderItemIds, currentOrder) => [
+        ...orderItemIds,
+        ...currentOrder.items.map((currentItem) => currentItem.productId)
+      ], []);
+
+    const currentProductId = ReactionProduct.selectedProductId();
+
+    const userHasPurchasedProduct = userOrderItemIds.includes(currentProductId);
+
     onData(null, {
       averageRating: averageRating || 0,
-      reviewCount
+      reviewCount,
+      userHasPurchasedProduct
     });
   }
 }
