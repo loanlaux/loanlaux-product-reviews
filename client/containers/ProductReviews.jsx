@@ -6,6 +6,7 @@ import { Meteor } from "meteor/meteor";
 import { ProductReviewsComponent } from "../components";
 import { ProductReviews } from "../../lib/collection";
 import { ReactionProduct } from "/lib/api";
+import { Reaction } from "/client/api";
 
 const wrapComponent = (Comp) => (
   class ProductReviewsContainer extends Component {
@@ -19,8 +20,11 @@ const wrapComponent = (Comp) => (
     };
 
     render() {
+      const canSubmitReview = Reaction.hasPermission("account/profile", Meteor.userId(), Reaction.getShopId());
+
       return (
         <Comp
+          canSubmitReview={canSubmitReview}
           onSubmitReview={this.handleSubmitReview}
           {...this.props}
         />
