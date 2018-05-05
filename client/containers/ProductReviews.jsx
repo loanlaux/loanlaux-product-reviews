@@ -8,6 +8,7 @@ import { Reaction } from "/client/api";
 import { Orders, Packages } from "/lib/collections";
 import { ProductReviewsComponent } from "../components";
 import { ProductReviews } from "../../lib/collection";
+import hasUserPurchasedProduct from "../../lib/hasUserPurchasedProduct";
 
 const wrapComponent = (Comp) => (
   class ProductReviewsContainer extends Component {
@@ -64,15 +65,9 @@ function composer(props, onData) {
     if (!packageSettings.allowReviewsWithoutPurchasing) {
       const userOrders = Orders.find().fetch();
 
-      const userOrderItemIds = userOrders
-        .reduce((orderItemIds, currentOrder) => [
-          ...orderItemIds,
-          ...currentOrder.items.map((currentItem) => currentItem.productId)
-        ], []);
-
       const currentProductId = ReactionProduct.selectedProductId();
 
-      userHasPurchasedProduct = userOrderItemIds.includes(currentProductId);
+      userHasPurchasedProduct = hasUserPurchasedProduct(userOrders, currentProductId);
     }
 
     onData(null, {
