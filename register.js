@@ -5,6 +5,17 @@ Reaction.registerPackage({
   name: "loanlaux-product-reviews",
   icon: "fa fa-star",
   autoEnable: true,
-  settings: {},
-  registry: []
+  settings: {
+    public: {
+      allowReviewsWithoutPurchasing: false
+    }
+  },
+  registry: [{
+    label: "Product Reviews",
+    name: "loanlaux-product-reviews",
+    icon: "fa fa-star",
+    provides: ["settings"],
+    description: "Manage product review settings",
+    template: "ProductReviewSettings"
+  }]
 });
