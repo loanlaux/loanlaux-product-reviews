@@ -29,11 +29,23 @@ Meteor.methods({
       throw new Meteor.Error("access-denied", "You need to purchase this product to review it");
     }
 
-    ProductReviews.insert({
-      rating,
-      productId,
-      userId
-    });
+    // If review exists for this user on this product, simply update the rating
+
+    if (ProductReviews.find({ productId, userId }).count() > 0) {
+      ProductReviews.update({ productId, userId }, {
+        $set: {
+          rating
+        }
+      });
+    } else {
+      // Otherwise, create a new review
+
+      ProductReviews.insert({
+        rating,
+        productId,
+        userId
+      });
+    }
   },
 
   "loanlaux/updateProductReviewSettings": (newSettings) => {
