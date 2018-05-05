@@ -22,7 +22,7 @@ const wrapComponent = (Comp) => (
             [name]: isChecked
           }
         }
-      });
+      }, () => Meteor.call("loanlaux/updateProductReviewSettings", this.state));
     };
 
     render() {
