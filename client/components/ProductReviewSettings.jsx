@@ -16,6 +16,12 @@ class ProductReviewSettings extends Component {
           <CardBody expandable>
             <div className="panel-group">
               <Components.Switch
+                name={"allowReviewsFromGuests"}
+                label={"Allow reviews from guests"}
+                checked={settings.allowReviewsFromGuests}
+                onChange={onSwitchToggle}
+              />
+              <Components.Switch
                 name={"allowReviewsWithoutPurchasing"}
                 label={"Allow reviews without purchasing product"}
                 checked={settings.allowReviewsWithoutPurchasing}

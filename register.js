@@ -7,6 +7,7 @@ Reaction.registerPackage({
   autoEnable: true,
   settings: {
     public: {
+      allowReviewsFromGuests: false,
       allowReviewsWithoutPurchasing: false
     }
   },
