@@ -14,7 +14,7 @@
     "url": "git+https://github.com/loanlaux/loanlaux-product-reviews.git"
   },
   "author": "Loan Laux <contact@loanlaux.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/loanlaux/loanlaux-product-reviews/issues"
   },
